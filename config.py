@@ -25,7 +25,7 @@ OLLAMA_TIMEOUT = int(os.getenv("OLLAMA_TIMEOUT", "120"))
 # ─── Gemini Fallback ──────────────────────────────────────────────────────────
 # Set GEMINI_API_KEY in your .env file to enable the cloud fallback.
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 # JARVIS switches to Gemini when a local response is unavailable OR when the
 # user explicitly asks for "more power".
 GEMINI_FALLBACK_ENABLED = bool(GEMINI_API_KEY)
