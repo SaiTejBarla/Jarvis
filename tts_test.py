@@ -1,0 +1,9 @@
+import logging, sys
+logging.basicConfig(level=logging.INFO, stream=sys.stdout,
+                    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+
+from voice.text_to_speech import TextToSpeech
+tts = TextToSpeech()
+print("Speaking...")
+tts.speak("Hello Sir. I am JARVIS and I am fully operational.")
+print("Done.")

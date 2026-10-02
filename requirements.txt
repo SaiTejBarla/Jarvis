@@ -1,0 +1,54 @@
+# requirements.txt — JARVIS Phase 1 + 2 + 3
+# Install with: pip install -r requirements.txt
+
+# ── Core ──────────────────────────────────────────────────────────────────────
+requests>=2.31.0          # Ollama REST API calls
+python-dotenv>=1.0.0      # .env file loading
+
+# ── Gemini fallback (optional — only needed if GEMINI_API_KEY is set) ─────────
+google-generativeai>=0.7.0
+
+# ── Phase 2 — Voice ───────────────────────────────────────────────────────────
+openai-whisper             # Local speech-to-text (Whisper)
+pyaudio                    # Microphone capture
+openwakeword               # "Hey Jarvis" wake-word detection
+kokoro-onnx                # Local TTS engine
+sounddevice                # Audio playback
+soundfile                  # WAV decoding
+numpy                      # Audio array processing
+pyttsx3                    # Fallback TTS
+
+# ── Phase 3 — Memory ──────────────────────────────────────────────────────────
+chromadb                   # Local vector store for long-term memory
+
+# ── Phase 3 — Tools ───────────────────────────────────────────────────────────
+duckduckgo-search          # Web search (no API key needed)
+psutil                     # Battery / system info
+
+# ── Phase 3 — Web UI ──────────────────────────────────────────────────────────
+streamlit                  # Web dashboard (run: streamlit run ui/app.py)
+
+# ── Phase 4 — (no extra installs needed) ─────────────────────────────────────
+# agents/planner.py  — uses existing tools, no new deps
+# tools/news.py      — uses stdlib urllib + xml, no new deps
+# tools/notes.py     — uses stdlib pathlib, no new deps
+# tools/media.py     — uses stdlib subprocess + PowerShell, no new deps
+
+# ── Phase 5 — Optional installs ───────────────────────────────────────────────
+# tools/screenshot.py — install for screen reading:
+#   pip install pyautogui Pillow pytesseract
+#   + Tesseract OCR: https://github.com/UB-Mannheim/tesseract/wiki
+# All other Phase 5 tools use stdlib only (tkinter, subprocess, pathlib, json)
+
+# ── Phase 4 remaining + Phase 5 security ──────────────────────────────────────
+playwright                 # Browser automation (after install: playwright install chromium)
+# core/auth.py   — stdlib only (hashlib, json)
+# core/audit.py  — stdlib only (json, threading)
+
+# ── Phase 6 — Desktop UI ──────────────────────────────────────────────────────
+PyQt6                      # Desktop HUD + system tray (pip install PyQt6)
+
+# ── Phase 7 — Intelligence ────────────────────────────────────────────────────
+# agents/monitor.py      — uses psutil (already installed)
+# tools/home_assistant.py — uses requests (already installed), needs HA_URL + HA_TOKEN in .env
+# tools/plugins.py        — stdlib only (importlib, pathlib)
